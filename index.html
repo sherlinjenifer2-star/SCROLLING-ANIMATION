@@ -14,16 +14,16 @@
 }
 
 body{
-    background:#ffffff;
-    color:#111;
+    background:#000;
+    color:white;
     overflow-x:hidden;
 }
 
-/* SCROLL SPACE */
+/* Make page tall for smooth scroll animation */
 body::after{
     content:"";
     display:block;
-    height:300vh; /* Makes page tall for scrolling animation */
+    height:350vh;
 }
 
 /* Background Canvas */
@@ -33,46 +33,56 @@ body::after{
     left:0;
     width:100%;
     height:100%;
+    z-index:-2;
+}
+
+/* Dark overlay to enhance animation visibility */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
     z-index:-1;
-    opacity:0.18;   /* Increase to 0.15 if you want stronger visibility */
 }
 
 /* Main Content */
 .container{
-    position:relative;
     width:85%;
     max-width:1100px;
     margin:auto;
-    padding:80px 0;
+    padding:100px 0;
 }
 
 section{
-    margin-bottom:80px;
+    margin-bottom:100px;
 }
 
 .card{
-    background:rgba(255,255,255,0.95);
-    padding:35px;
-    border-radius:18px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.08);
-    backdrop-filter:blur(8px);
+    background:rgba(255,255,255,0.08); /* Glass effect */
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
 }
 
 h1{
-    font-size:44px;
-    margin-bottom:15px;
+    font-size:46px;
+    margin-bottom:20px;
 }
 
 h2{
-    font-size:26px;
+    font-size:28px;
     margin-bottom:20px;
-    border-bottom:2px solid #e0e0e0;
+    border-bottom:1px solid rgba(255,255,255,0.3);
     padding-bottom:8px;
 }
 
 p{
-    line-height:1.8;
-    margin-bottom:10px;
+    line-height:1.9;
+    margin-bottom:12px;
+    font-size:17px;
 }
 
 ul{
@@ -86,9 +96,9 @@ li{
 
 footer{
     text-align:center;
-    padding:50px 0;
+    padding:60px 0;
     font-size:14px;
-    color:#666;
+    opacity:0.7;
 }
 </style>
 </head>
@@ -96,6 +106,7 @@ footer{
 <body>
 
 <canvas id="bg-canvas"></canvas>
+<div class="overlay"></div>
 
 <div class="container">
 
@@ -103,14 +114,14 @@ footer{
 <h1>X. Sherlin Jenifer</h1>
 <p><strong>Email:</strong> sherlinjenifer2@gmail.com</p>
 <p><strong>Phone:</strong> +91 6385851370</p>
-<p><strong>Address:</strong> Kootalumoodu, Painkulam Post, 629173, Kanyakumari District</p>
+<p><strong>Address:</strong> Kanyakumari District, Tamil Nadu</p>
 </section>
 
 <section class="card">
 <h2>Career Objective</h2>
 <p>
 Beginner programmer seeking a coding internship to apply my technical skills,
-learn from real-world projects, and gain practical industry experience.
+learn from real-world projects and gain practical industry experience.
 </p>
 </section>
 
@@ -119,17 +130,13 @@ learn from real-world projects, and gain practical industry experience.
 <p><strong>B.E – Electronics and Communication Engineering</strong></p>
 <p>Government College of Engineering, Tirunelveli</p>
 <p>CGPA: 8.89</p>
-<br>
-<p><strong>12th Standard</strong></p>
-<p>Munchirai Punitha Arockiya Matha Matric Higher Secondary School</p>
-<p>Percentage: 93%</p>
 </section>
 
 <section class="card">
-<h2>Technical Skills</h2>
+<h2>Skills</h2>
 <ul>
-<li>Beginner in C Programming</li>
-<li>Beginner in Python</li>
+<li>C Programming (Beginner)</li>
+<li>Python (Beginner)</li>
 <li>Analytical Thinking</li>
 <li>Communication Skills</li>
 </ul>
@@ -138,33 +145,14 @@ learn from real-world projects, and gain practical industry experience.
 <section class="card">
 <h2>Projects</h2>
 <p><strong>Smart Blind Stick</strong></p>
-<p>Arduino UNO based obstacle detection system for visually impaired individuals.</p>
+<p>Arduino-based obstacle detection system.</p>
 <br>
 <p><strong>Automated Street Light System</strong></p>
-<p>Sensor-based energy efficient street light automation system.</p>
-</section>
-
-<section class="card">
-<h2>Courses Completed</h2>
-<ul>
-<li>NPTEL – Applied Linear Algebra</li>
-<li>NPTEL – Machine Learning</li>
-<li>NPTEL – Design and Analysis of VLSI Subsystem</li>
-<li>TCS iON Career Edge – Young Professional</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>Languages</h2>
-<ul>
-<li>Tamil</li>
-<li>English</li>
-<li>Malayalam</li>
-</ul>
+<p>Energy efficient sensor-based lighting system.</p>
 </section>
 
 <footer>
-© 2026 X. Sherlin Jenifer | Resume Portfolio
+© 2026 Sherlin Jenifer | Portfolio
 </footer>
 
 </div>
@@ -178,41 +166,42 @@ canvas.height = window.innerHeight;
 
 const frameCount = 240;
 const images = [];
-const imageSeq = { frame: 0 };
+let currentFrameIndex = 0;
 
-const currentFrame = (index) => {
+function getFrame(index){
     return `frames/ezgif-frame-${String(index).padStart(3,'0')}.jpg`;
-};
+}
 
-for (let i = 1; i <= frameCount; i++) {
+for(let i=1;i<=frameCount;i++){
     const img = new Image();
-    img.src = currentFrame(i);
+    img.src = getFrame(i);
     images.push(img);
 }
 
-function render() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(images[imageSeq.frame], 0, 0, canvas.width, canvas.height);
+function render(){
+    context.clearRect(0,0,canvas.width,canvas.height);
+    context.drawImage(images[currentFrameIndex],0,0,canvas.width,canvas.height);
 }
 
 images[0].onload = render;
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
     const scrollTop = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const scrollFraction = scrollTop / maxScroll;
+
     const frameIndex = Math.min(
         frameCount - 1,
         Math.floor(scrollFraction * frameCount)
     );
 
-    if (frameIndex !== imageSeq.frame) {
-        imageSeq.frame = frameIndex;
+    if(frameIndex !== currentFrameIndex){
+        currentFrameIndex = frameIndex;
         requestAnimationFrame(render);
     }
 });
 
-window.addEventListener("resize", () => {
+window.addEventListener("resize",()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     render();
