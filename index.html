@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>X. Sherlin Jenifer | Portfolio</title>
+<title>Sherlin Jenifer | Portfolio</title>
 
 <style>
 *{
@@ -14,12 +14,19 @@
 }
 
 body{
-    background:#f9f9fb;
-    color:#1e1e1e;
+    background:#ffffff;
+    color:#111;
     overflow-x:hidden;
 }
 
-/* Scroll Animation Canvas */
+/* SCROLL SPACE */
+body::after{
+    content:"";
+    display:block;
+    height:300vh; /* Makes page tall for scrolling animation */
+}
+
+/* Background Canvas */
 #bg-canvas{
     position:fixed;
     top:0;
@@ -27,61 +34,59 @@ body{
     width:100%;
     height:100%;
     z-index:-1;
-    opacity:0.07; /* watermark transparency */
+    opacity:0.12;   /* Increase to 0.15 if you want stronger visibility */
 }
 
-/* Layout */
+/* Main Content */
 .container{
+    position:relative;
     width:85%;
     max-width:1100px;
     margin:auto;
-    padding:60px 0;
+    padding:80px 0;
 }
 
 section{
-    margin-bottom:70px;
+    margin-bottom:80px;
 }
 
 .card{
-    background:rgba(255,255,255,0.92);
-    padding:30px;
-    border-radius:14px;
+    background:rgba(255,255,255,0.95);
+    padding:35px;
+    border-radius:18px;
     box-shadow:0 15px 40px rgba(0,0,0,0.08);
-    backdrop-filter:blur(6px);
+    backdrop-filter:blur(8px);
 }
 
 h1{
-    font-size:40px;
-    margin-bottom:10px;
+    font-size:44px;
+    margin-bottom:15px;
 }
 
 h2{
-    font-size:24px;
+    font-size:26px;
     margin-bottom:20px;
-    border-bottom:2px solid #e3e3e3;
+    border-bottom:2px solid #e0e0e0;
     padding-bottom:8px;
 }
 
 p{
-    line-height:1.7;
+    line-height:1.8;
     margin-bottom:10px;
 }
 
 ul{
     margin-left:20px;
+    margin-top:10px;
 }
 
 li{
     margin-bottom:8px;
 }
 
-.contact p{
-    margin-bottom:6px;
-}
-
 footer{
     text-align:center;
-    padding:40px 0;
+    padding:50px 0;
     font-size:14px;
     color:#666;
 }
@@ -95,91 +100,74 @@ footer{
 <div class="container">
 
 <section class="card">
-    <h1>X. Sherlin Jenifer</h1>
-    <div class="contact">
-        <p><strong>Email:</strong> sherlinjenifer2@gmail.com</p>
-        <p><strong>Phone:</strong> +91 6385851370</p>
-        <p><strong>Address:</strong> Kootalumoodu, Painkulam Post, 629173, Kanyakumari District</p>
-    </div>
+<h1>X. Sherlin Jenifer</h1>
+<p><strong>Email:</strong> sherlinjenifer2@gmail.com</p>
+<p><strong>Phone:</strong> +91 6385851370</p>
+<p><strong>Address:</strong> Kootalumoodu, Painkulam Post, 629173, Kanyakumari District</p>
 </section>
 
 <section class="card">
-    <h2>Objective</h2>
-    <p>
-        Beginner programmer seeking a coding internship to apply my technical skills,
-        learn from real world projects and gain practical industry experience.
-    </p>
+<h2>Career Objective</h2>
+<p>
+Beginner programmer seeking a coding internship to apply my technical skills,
+learn from real-world projects, and gain practical industry experience.
+</p>
 </section>
 
 <section class="card">
-    <h2>Education</h2>
-    <p><strong>B.E. Electronics and Communication Engineering</strong></p>
-    <p>Government College of Engineering, Tirunelveli</p>
-    <p>CGPA: 8.89 (3rd Year, 2023)</p>
-    <br>
-    <p><strong>12th Standard</strong></p>
-    <p>Munchirai Punitha Arockiya Matha Matric Higher Secondary School, Puthukkadai</p>
-    <p>Percentage: 93%</p>
+<h2>Education</h2>
+<p><strong>B.E – Electronics and Communication Engineering</strong></p>
+<p>Government College of Engineering, Tirunelveli</p>
+<p>CGPA: 8.89</p>
+<br>
+<p><strong>12th Standard</strong></p>
+<p>Munchirai Punitha Arockiya Matha Matric Higher Secondary School</p>
+<p>Percentage: 93%</p>
 </section>
 
 <section class="card">
-    <h2>Skills</h2>
-    <ul>
-        <li>Beginner in C</li>
-        <li>Beginner in Python</li>
-        <li>Analytical Thinking</li>
-        <li>Strong Communication Skills</li>
-    </ul>
+<h2>Technical Skills</h2>
+<ul>
+<li>Beginner in C Programming</li>
+<li>Beginner in Python</li>
+<li>Analytical Thinking</li>
+<li>Communication Skills</li>
+</ul>
 </section>
 
 <section class="card">
-    <h2>Projects</h2>
-    <p><strong>Smart Blind Stick</strong></p>
-    <p>
-        Arduino UNO based device designed to assist visually impaired people.
-        Uses sensors to detect obstacles and provide guidance.
-    </p>
-    <br>
-    <p><strong>Automated Street Light System with Energy Efficiency</strong></p>
-    <p>
-        Developed an automatic street light system using sensors to control lighting
-        based on environmental conditions, significantly improving energy efficiency
-        and reducing power wastage.
-    </p>
+<h2>Projects</h2>
+<p><strong>Smart Blind Stick</strong></p>
+<p>Arduino UNO based obstacle detection system for visually impaired individuals.</p>
+<br>
+<p><strong>Automated Street Light System</strong></p>
+<p>Sensor-based energy efficient street light automation system.</p>
 </section>
 
 <section class="card">
-    <h2>Courses Completed</h2>
-    <ul>
-        <li>NPTEL – Applied Linear Algebra for Signal Processing and Data Analytics</li>
-        <li>NPTEL – Machine Learning</li>
-        <li>Design and Analysis of VLSI Subsystem</li>
-        <li>TCS iON Career Edge – Young Professional</li>
-    </ul>
+<h2>Courses Completed</h2>
+<ul>
+<li>NPTEL – Applied Linear Algebra</li>
+<li>NPTEL – Machine Learning</li>
+<li>NPTEL – Design and Analysis of VLSI Subsystem</li>
+<li>TCS iON Career Edge – Young Professional</li>
+</ul>
 </section>
 
 <section class="card">
-    <h2>Certification</h2>
-    <p>
-        Foundation Course on IR4.0 Technologies under TechSaksham,
-        implemented by Edunet Foundation.
-    </p>
+<h2>Languages</h2>
+<ul>
+<li>Tamil</li>
+<li>English</li>
+<li>Malayalam</li>
+</ul>
 </section>
-
-<section class="card">
-    <h2>Languages</h2>
-    <ul>
-        <li>Tamil</li>
-        <li>English</li>
-        <li>Malayalam</li>
-    </ul>
-</section>
-
-</div>
 
 <footer>
-© 2026 X. Sherlin Jenifer | Portfolio
+© 2026 X. Sherlin Jenifer | Resume Portfolio
 </footer>
+
+</div>
 
 <script>
 const canvas = document.getElementById("bg-canvas");
@@ -189,13 +177,12 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const frameCount = 240;
-
-const currentFrame = index => (
-    `frames/ezgif-frame-${String(index).padStart(3, '0')}.jpg`
-);
-
 const images = [];
-const imageSeq = { frame: 1 };
+const imageSeq = { frame: 0 };
+
+const currentFrame = (index) => {
+    return `frames/ezgif-frame-${String(index).padStart(3,'0')}.jpg`;
+};
 
 for (let i = 1; i <= frameCount; i++) {
     const img = new Image();
@@ -205,22 +192,24 @@ for (let i = 1; i <= frameCount; i++) {
 
 function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(images[imageSeq.frame - 1], 0, 0, canvas.width, canvas.height);
+    context.drawImage(images[imageSeq.frame], 0, 0, canvas.width, canvas.height);
 }
 
 images[0].onload = render;
 
 window.addEventListener("scroll", () => {
-    const scrollTop = document.documentElement.scrollTop;
-    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollFraction = scrollTop / maxScrollTop;
-
-    imageSeq.frame = Math.min(
-        frameCount,
-        Math.ceil(scrollFraction * frameCount)
+    const scrollTop = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollFraction = scrollTop / maxScroll;
+    const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
     );
 
-    requestAnimationFrame(render);
+    if (frameIndex !== imageSeq.frame) {
+        imageSeq.frame = frameIndex;
+        requestAnimationFrame(render);
+    }
 });
 
 window.addEventListener("resize", () => {
